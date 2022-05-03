@@ -9,5 +9,5 @@
           - name: print versions
             copy:
               content: "{{version.stdout[0]}}\n\r"
-              dest: ~/Ansible/Cisco/{{inventory_hostname}}-cfg.txt
+              dest: ~/Cisco-ansible-backup/{{inventory_hostname}}-cfg.txt
             
