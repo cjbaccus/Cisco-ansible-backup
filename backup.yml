@@ -1,0 +1,13 @@
+---
+- hosts: csr
+
+  tasks:
+          - name: Show version
+            ios_command:
+                    commands: show run
+            register: version
+          - name: print versions
+            copy:
+              content: "{{version.stdout[0]}}\n\r"
+              dest: ~/Ansible/Cisco/{{inventory_hostname}}-cfg.txt
+            
