@@ -1,0 +1,8 @@
+---
+
+- hosts: csr
+
+  tasks:
+          - name: Configure single ntp command
+            ios_config:
+                    lines: ntp server 132.163.96.5
