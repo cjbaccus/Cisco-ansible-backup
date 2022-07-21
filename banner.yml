@@ -1,0 +1,20 @@
+---
+## playbook to set warning banner on network equipment
+
+- hosts: all
+  connection: local
+  gather_facts: False
+  
+  tasks:
+        - name: Configure warning banner
+          ios_banner:
+                banner: login
+                text: | 
+                      *******************************************************************
+                      *                  --Warning Banner--                             *
+                      * -- Warning : By using this system you are accepting             *
+                      * That all usage will be monitored, and that you will not         *
+                      * use the system in any way that will be destructive, detrimental,*
+                      *  or illegal.  Any violations or mis-use of the system will be   *
+                      *  prosecuted to the full limit of the law.                       *
+                      *******************************************************************
