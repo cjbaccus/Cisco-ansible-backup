@@ -1,1 +1,35 @@
 ---
+## Playbook to get ip arp info from Cisco switches
+
+- hosts: localhost
+  gather_facts: False
+  
+  tasks:
+        - name: Get Ansible date/time facts
+          setup:
+                filter: "ansible_date_time"
+                gather_subset: "!all"
+        - name: Store DTG as fact
+          set_fact:
+                DTG: "{{ ansible_date_time }}"
+        - name: Create Directory {{ hostvars.localhost.DTG }}
+          file:
+                path: "~/Ansible/Cisco/Interfaces_{{hostvars.localhost.DTG}}"
+                mode: 0755
+                state: directory
+                
+- hosts: sw
+  connection: local
+  gather_facts: False
+  
+  tasks:
+        - name: Show IP arp tables
+          ios_command:
+                commands:
+                      - show ip arp
+          register: showIP
+        - name: Save output to Interface_{{hostvars.localhost.DTG}}
+          copy:
+                content: "{{showIP.stdout[0]}}\n"
+                dest: "~/Ansible/Cisco/Interface_{{hostvars.localhost.DTG}}/{{inventory.hostname}}-{{hostvars.localhost.DTG}}-int.txt
+                
