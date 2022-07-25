@@ -11,7 +11,7 @@
                 gather_subset: "!all"
         - name: Store DTG as fact
           set_fact:
-                DTG: "{{ ansible_date_time }}"
+                DTG: "{{ ansible_date_time.date }}"
         - name: Create Directory {{ hostvars.localhost.DTG }}
           file:
                 path: "~/Ansible/Cisco/Interfaces_{{hostvars.localhost.DTG}}"
