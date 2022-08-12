@@ -31,5 +31,5 @@
         - name: Save output to Interface_{{hostvars.localhost.DTG}}
           copy:
                 content: "{{showIP.stdout[0]}}\n"
-                dest: "~/Ansible/Cisco/Interface_{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-int.txt
+                dest: "~/Ansible/Cisco/Interface_{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-int.txt"
                 
