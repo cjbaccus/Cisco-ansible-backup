@@ -1,0 +1,15 @@
+---
+## playbook to set warning banner on network equipment
+
+- hosts: cisco
+  connection: local
+  gather_facts: False
+  
+  tasks:
+        - name: Add new User to all devices
+          cisco.ios.ios_user:
+            name: ciscoadmin
+            privilege: 15
+            configured_password: "cisco123"
+            update_password: always
+            state: present
