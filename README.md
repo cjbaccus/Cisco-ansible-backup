@@ -11,3 +11,20 @@ to use this repo, first clone then perform the following:
 ### config usage
 * edit the ntp.yml to push whatever commands to the same infrastructure. (you can just add the ntp servers as set in script too)
 * execute ``` ansible-playbook ntp.yml --ask-vault-pass ``` and the script will add the publicly available NTP server
+
+
+#### Linux tips and tricks
+
+X windows when SSHd
+
+``` bash
+export XAUTHORITY=~/.Xauthority
+```
+virtmanager stuff
+``` bash
+sudo virt-manager
+sudo virsh destroy <vm-name>
+sudo virsh start <vm-name>
+sudo virt-viewer <vm-name>
+```
+
