@@ -1,0 +1,12 @@
+---
+- name: Copy SSH key to Raspberry Pi hosts
+  hosts: rpi
+  gather_facts: no  # We don't need facts for this task
+
+  tasks:
+    - name: Copy SSH key to authorized_keys
+      authorized_key:
+        user: "{{ ansible_user }}"  # Use the Ansible user to determine the target user
+        key: "{{ lookup('file', '/home/{{ ansible_user }}/.ssh/id_rsa.pub') }}"  # Specify the path to your public SSH key
+        state: present  # Ensure the key is present in the authorized_keys file
+
