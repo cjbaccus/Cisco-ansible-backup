@@ -12,10 +12,10 @@ fi
 # Loop through each IP address in the file
 while read -r ip; do
   # Use nslookup to check DNS resolution
-  result=$(nmap "$ip")
+  result=$(nslookup "$ip")
 
   # Check if DNS resolution was successful
-  if echo "$result" | grep -q "Nmap"; then
+  if echo "$result" | grep -q "name"; then
     echo "IP address '$ip' resolves to:"
     echo "$result"
   else
