@@ -14,7 +14,7 @@
                 DTG: "{{ ansible_date_time.date }}"
         - name: Create Directory {{ hostvars.localhost.DTG }}
           file:
-                path: "~/Ansible/Cisco/Interfaces_{{hostvars.localhost.DTG}}"
+                path: "{{playbook_dir}}/Interfaces_{{hostvars.localhost.DTG}}"
                 mode: 0755
                 state: directory
                 
@@ -31,5 +31,5 @@
         - name: Save output to Interface_{{hostvars.localhost.DTG}}
           copy:
                 content: "{{showIP.stdout[0]}}\n"
-                dest: "~/Ansible/Cisco/Interface_{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-int.txt"
+                dest: "{{playbook_dir}}/Interface_{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-int.txt"
                 
