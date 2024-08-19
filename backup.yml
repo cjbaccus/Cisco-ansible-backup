@@ -9,5 +9,5 @@
           - name: print versions
             copy:
               content: "{{version.stdout[0]}}\n\r"
-              dest: "{{ playbook_dir }}/{{inventory_hostname}}-cfg.txt
+              dest: "{{ playbook_dir }}/{{inventory_hostname}}-cfg.txt"
             
